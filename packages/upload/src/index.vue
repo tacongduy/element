@@ -103,6 +103,10 @@ export default {
     onExceed: {
       type: Function,
       default: noop
+    },
+    index:{
+      type: Number,
+      default: -1
     }
   },
 
@@ -160,7 +164,7 @@ export default {
     },
     handleProgress(ev, rawFile) {
       const file = this.getFile(rawFile);
-      this.onProgress(ev, file, this.uploadFiles);
+      this.onProgress(ev, file, this.uploadFiles, this.index);
       file.status = 'uploading';
       file.percentage = ev.percent || 0;
     },
